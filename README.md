@@ -1,23 +1,36 @@
 # Covid-19 Tracker Dashboard
 
-![abc](images/dashboard-1.png)
+![abc](images/dashboard-4.png)
 
 ----
+## Motivation
+Covid-19 was(is) an unprecedented pandemic that [stole the jobs of 114 million people] in 2020 and the [lives of another 2.8 million] as of 1st April 2021.
 
-Why
-What
-Where 
-Who </br>
 
-Our World In Data ([OWID])
-Updates database everyday roughly at 08:30 UTC
+Relying on data gathered by Our World In Data ([OWID]), this project hopes to extract and visualize the global status of covid-19 in order to better understand its progression.
+The [OWID Database] is updated everyday at roughly 08:30 UTC.
+
+From the visualization above, we can see that Gibraltar and Israel leads the world in fully vaccinated residents, at 84.6% and 55.5% of their population respectively.
+ </br>
+
+Other visualizations track the no. of cases and deaths in each country due to Covid-19, as well as the no. of people fully vaccinated.
 
 ----
 
 ## Installation
 ### Environment
-- Ubuntu
-    - Apt install repositories
+For the rest of this set-up, we will assume a ```Ubuntu 16 (Xenial Xerus)``` environment. You may follow this guide to [launch an EC2 instance on AWS with Ubuntu]. I'll be using Vagrant + VirtualBox.
+
+### Set-up Vagrant box
+```bash
+vagrant up
+vagrant ssh
+```
+
+### Apt install repositories
+```bash
+sudo apt update && sudo apt upgrade -y
+```
 - Git
 
 ### Software
@@ -87,8 +100,13 @@ With that, you have your very own covid-19 dashboard which tracks the global sta
 (Data above is accurate as of *1st April 2021*)
 
 
-## References
+Kudos!
 
+## References
+[stole the jobs of 114 million people]: https://www.weforum.org/agenda/2021/02/covid-employment-global-job-loss/
+[lives of another 2.8 million]: https://www.worldometers.info/coronavirus/coronavirus-death-toll/
 [OWID]: https://ourworldindata.org/
-[owid covid data]: https://github.com/owid/covid-19-data/tree/master/public/data
+[OWID Database]: https://github.com/owid/covid-19-data/tree/master/public/data
+
+[launch an EC2 instance on AWS with Ubuntu]: https://mobisoftinfotech.com/resources/mguide/launch-aws-ec2-server-set-ubuntu-16-04/
 [import kibana dashboards]: https://support.logz.io/hc/en-us/articles/210207225-How-can-I-export-import-Dashboards-Searches-and-Visualizations-from-my-own-Kibana-
