@@ -21,28 +21,39 @@ Other visualizations track the no. of cases and deaths in each country due to Co
 ### Environment
 For the rest of this set-up, we will assume a ```Ubuntu 16 (Xenial Xerus)``` environment. You may follow this guide to [launch an EC2 instance on AWS with Ubuntu]. I'll be using Vagrant + VirtualBox.
 
-### Set-up Vagrant box
+### Set-up Vagrant box with included Vagrantfile
+Assuming you are on WindowsOS and have Vagrant + Oracle VirtualBox installed, copy Vagrantfile to your desired directory and run the following commands on Git Bash:
 ```bash
+cd /path/to/Vagrantfile
 vagrant up
 vagrant ssh
 ```
-
 ### Apt install repositories
+Using Ubuntu's native apt package manager, update local package index files (**/etc/apt/sources.list** & **/etc/apt/sources.list.d**), then run the actual software upgrade.
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
-- Git
+### Install Git and Python3
+```bash
+sudo apt install git 
+```
 
-### Software
-- Elasticsearch
-- Kibana
-- Python
-    - Core
-    - Pip
+ubuntu-xenial comes pre-installed with python 3.5. We require >= python 3.7 to run our script
+Follow [this](https://pip.pypa.io/en/stable/installing/#using-linux-package-managers) guide to upgrade python 3.5 to python 3.7. Or in a nutshell:
+```bash
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.7
+sudo ln -sf /usr/bin/python3.7 /usr/bin/python3
+cd ~
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
+```
 
-    python3 -m pip install --user --upgrade pip
+### Elasticsearch & Kibana set-up
 
-Run script once for initial load 
+
 <br><br>
 
 ----
