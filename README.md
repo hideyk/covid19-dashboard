@@ -2,6 +2,10 @@
 
 ![abc](images/dashboard-4.png)
 
+## Technology stack
+Python | ELK | Vagrant | Ubuntu
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](images/python.png)  |  ![](images/elk.png)  | ![](images/vagrant.png) | ![](images/ubuntu.png)
 
 ## Motivation
 Covid-19 was(is) an unprecedented pandemic that [stole the jobs of 114 million people] in 2020 and the [lives of another 2.8 million] as of 1st April 2021.
@@ -19,10 +23,10 @@ Other visualizations track the no. of cases and deaths in each country due to Co
 
 ## Installation
 ### Environment
-For the rest of this set-up, we will assume a ```Ubuntu 16 (Xenial Xerus)``` environment. There are different approaches to obtain an environment; you may follow this guide to [launch an EC2 instance running Ubuntu distribution on AWS]. I'll be using Vagrant + VirtualBox.
+For the rest of this set-up, we will assume a ```Ubuntu 16 (Xenial Xerus)``` environment. There are different approaches to obtain an environment; you may follow this guide to [launch an EC2 instance running Ubuntu distribution on AWS]. I'll be using Vagrant + VirtualBox instead with steps below.
 
 ### Set-up Vagrant box with included Vagrantfile
-Assuming you are on Windows OS, [install Vagrant](https://www.vagrantup.com/downloads) and [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads). Once installed, copy Vagrantfile to your desired directory and run the following commands on Git Bash. This will set up your vagrant box and ssh into your new environment:
+Assuming you are on Windows OS, follow these guides to [install Vagrant](https://www.vagrantup.com/downloads) and [Oracle VirtualBox](https://www.virtualbox.org/wiki/Downloads). Once installed, copy Vagrantfile to your desired directory and run the following commands on Git Bash. This will set up your vagrant box and ssh into your new environment:
 ```bash
 cd /path/to/Vagrantfile
 vagrant up
