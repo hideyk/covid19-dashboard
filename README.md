@@ -33,7 +33,7 @@ Using Ubuntu's native apt package manager in your Ubuntu box, update local packa
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
-### Install Git and Python3
+### Install Git & Python3
 ```bash
 sudo apt install git 
 ```
@@ -52,10 +52,52 @@ python3 get-pip.py
 ```
 
 ### Elasticsearch & Kibana set-up
+Elasticsearch is built using Java, and requires at least Java 8 in order to run. Only Oracle's Java and OpenJDK are supported. Additionally, the same JVM version should be used for all Elasticsearch nodes and clients. 
 
+To install OpenJDK Java 8 and verify its installation, run the following commands:
+``` bash
+sudo apt install openjdk-8-jdk openjdk-8-jre
+java -version
+```
+Finally, setup JAVA_HOME and JRE_HOME environment variables which are used by many Java applications to find Java libraries during runtime
+```bash
+cat >> /etc/environment <<EOL
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+EOL
+```
+- Referenced from [TechAdmin Java Installation Guide] 
 
+<br>
 
-<br><br>
+To install **Elasticsearch**, run the following commands:
+1. Import Elasticsearch public GPG key into APT
+2. Add Elastic source list to the ```sources.list.d``` directory where APT will look for new sources
+3. Update package lists so APT can read the new Elastic source
+4. Install Elasticsearch
+5. Start Elasticsearch service using systemctl manager
+6. Enable Elasticsearch every time server boots
+```bash
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update
+sudo apt install elasticsearch
+sudo systemctl start elasticsearch
+sudo systemctl enable elasticsearch
+```
+
+To install **Kibana**, run the following commands:
+1. Because you've already added Elastic package source in the previous step, you can just install remaining components of Elastic Stack
+2. Start Kibana service using systemctl manager
+3. Enable Kibana every time server boots
+```bash
+sudo apt install kibana
+sudo systemctl start kibana
+sudo systemctl enable kibana
+```
+- Referenced from [DigitalOcean Elasticsearch & Kibana Installation Guide]
+
+<br>
 
 ----
 
@@ -112,14 +154,26 @@ With that, you have your very own covid-19 dashboard which tracks the global sta
 ![](images/dashboard-3.png)
 (Data above is accurate as of *1st April 2021*)
 
+<br>
+Thanks for tuning in. Kudos!
+<br><br><br>
 
-Kudos!
 
 ## References
+- https://www.weforum.org/agenda/2021/02/covid-employment-global-job-loss/
+- https://www.worldometers.info/coronavirus/coronavirus-death-toll/
+- https://ourworldindata.org/
+- https://github.com/owid/covid-19-data/tree/master/public/data
+- https://mobisoftinfotech.com/resources/mguide/launch-aws-ec2-server-set-ubuntu-16-04/
+- https://support.logz.io/hc/en-us/articles/210207225-How-can-I-export-import-Dashboards-Searches-and-Visualizations-from-my-own-Kibana-
+- https://tecadmin.net/install-oracle-java-8-ubuntu-via-ppa/
+- https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04
+
 [stole the jobs of 114 million people]: https://www.weforum.org/agenda/2021/02/covid-employment-global-job-loss/
 [lives of another 2.8 million]: https://www.worldometers.info/coronavirus/coronavirus-death-toll/
 [OWID]: https://ourworldindata.org/
 [OWID Database]: https://github.com/owid/covid-19-data/tree/master/public/data
-
 [launch an EC2 instance running Ubuntu distribution on AWS]: https://mobisoftinfotech.com/resources/mguide/launch-aws-ec2-server-set-ubuntu-16-04/
 [import kibana dashboards]: https://support.logz.io/hc/en-us/articles/210207225-How-can-I-export-import-Dashboards-Searches-and-Visualizations-from-my-own-Kibana-
+[TechAdmin Java Installation Guide]: https://tecadmin.net/install-oracle-java-8-ubuntu-via-ppa/
+[DigitalOcean Elasticsearch & Kibana Installation Guide]: https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04
