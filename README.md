@@ -17,7 +17,7 @@ The [OWID Database] is updated everyday at roughly 08:30 UTC.
 From the visualization above, we can see that Gibraltar and Israel leads the world in fully vaccinated residents, at 84.6% and 55.5% of their population respectively.
  </br>
 
-Other visualizations track the no. of cases and deaths in each country due to Covid-19, as well as the no. of people fully vaccinated.
+Other visualizations track the no. of cases and deaths in each country due to Covid-19, as well as the evolution of covid-19 severity.
 
 ----
 
