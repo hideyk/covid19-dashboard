@@ -105,7 +105,7 @@ sudo systemctl enable kibana
 
 ----
 
-## Data Generation
+## Data Extraction
 ### Git clone this repository to the home directory of your user directory
 ```bash
 cd ~
@@ -146,7 +146,7 @@ Append the following lines to the end of your crontab:
 
 ----
 
-## Kibana Set-up
+## Kibana Dashboard Set-up
 Since we forwarded port 5601 from our vagrant box to same port 5601 on our host Windows machine, Kibana end-point will be reachable @ ```localhost:5601``` on your host machine. Access it using your preferred browser.
 
 Follow the instructions here to [import kibana dashboards] with ```~/covid19-dashboard/export.ndjson```. You may also choose to create customized visualizations/dashboards.
